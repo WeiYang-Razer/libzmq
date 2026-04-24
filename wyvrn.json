@@ -1,0 +1,39 @@
+{
+  "name": "libzmq",
+  "version": "4.3.5.0",
+  "schemaVersion": 2,
+  "kind": "DynamicLib",
+  "description": "ZeroMQ high-performance asynchronous messaging library",
+  "dependencies": {},
+  "options": {
+    "shared": {
+      "default": true,
+      "allowed": [true, false],
+      "description": "Build as shared library; set false for static"
+    }
+  },
+  "build": {
+    "system": "cmake",
+    "configs": [
+      "Debug",
+      "Release",
+      "RelWithDebInfo",
+      "MinSizeRel"
+    ],
+    "configure": [
+      "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+      "-DBUILD_SHARED=${options.shared}",
+      "-DBUILD_STATIC=ON",
+      "-DBUILD_TESTS=OFF",
+      "-DWITH_DOCS=OFF",
+      "-DWITH_PERF_TOOL=OFF",
+      "-DLIBZMQ_PEDANTIC=OFF",
+      "-DLIBZMQ_WERROR=OFF",
+      "-DENABLE_CURVE=OFF",
+      "-DCMAKE_DEBUG_POSTFIX=d",
+      "-DCMAKE_RELWITHDEBINFO_POSTFIX=rd",
+      "-DCMAKE_MINSIZEREL_POSTFIX=msr"
+    ],
+    "installDir": "install"
+  }
+}
